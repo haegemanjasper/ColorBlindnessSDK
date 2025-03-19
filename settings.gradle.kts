@@ -20,5 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ColorBlindnessSDK"
-include(":app")
- 
+include(":colorblindness_sdk")
