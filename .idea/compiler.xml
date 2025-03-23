@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="ColorBlindnessSDK.app" target="21" />
+      <module name="ColorBlindnessSDK.colorblindness_sdk.app" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

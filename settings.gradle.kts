@@ -16,10 +16,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
 rootProject.name = "ColorBlindnessSDK"
-include(":colorblindness_sdk")
-
 include(":app")
+include(":colorblindness_sdk")
