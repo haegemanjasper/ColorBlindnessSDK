@@ -27,9 +27,9 @@ class ColorSchemeProvider {
 
     // Protanopia (Red Blind)
     private val protanopiaColors = lightColorScheme(
-        primary = darkGreen,
+        primary = basePurple,
         onPrimary = white,
-        secondary = baseGreen,
+        secondary = darkGreen,
         onSecondary = black,
         tertiary = baseBlue,
         onTertiary = white,
@@ -55,7 +55,7 @@ class ColorSchemeProvider {
     private val tritanopiaColors = lightColorScheme(
         primary = baseRed,
         onPrimary = white,
-        secondary = baseGreen,
+        secondary = darkGreen,
         onSecondary = black,
         tertiary = basePurple,
         onTertiary = white,
