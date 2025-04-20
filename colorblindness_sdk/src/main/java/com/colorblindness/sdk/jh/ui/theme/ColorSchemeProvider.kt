@@ -1,74 +1,125 @@
 package com.colorblindness.sdk.jh.ui.theme
 
 import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 import com.colorblindness.sdk.jh.models.Types
 
 class ColorSchemeProvider {
 
-    // ====================
     // 🌈 BASIC COLORS
-    // ====================
-    private val baseRed = Color(0xFFFF0000)
-    private val baseBrown = Color(0xFF8B4513)
-    private val baseOrange = Color(0xFFFF7F00)
-    private val basePurple = Color(0xFF800080)
-    private val baseGreen = Color(0xFF00FF00)
-    private val darkGreen = Color(0xFF006400)
-    private val baseBlue = Color(0xFF0000FF)
-    private val baseYellow = Color(0xFFFFFF00)
-    private val white = Color(0xFFFFFFFF)
+
+    private val red = Color(0xFFE53935)
+    private val green = Color(0xFF43A047)
+    private val blue = Color(0xFF1E88E5)
+    private val yellow = Color(0xFFFFEB3B)
+    private val purple = Color(0xFF8E24AA)
+    private val brown = Color(0xFF6D4C41)
+    private val orange = Color(0xFFFFA726)
     private val black = Color(0xFF000000)
+    private val white = Color(0xFFFFFFFF)
+    private val gray = Color(0xFFBDBDBD)
 
-    // ====================
-    // 🎨 COLORS BY TYPE
-    // ====================
+    // LIGHT THEMES
 
-    // Protanopia (Red Blind)
-    private val protanopiaColors = lightColorScheme(
-        primary = basePurple,
+    private val protanopiaLight = lightColorScheme(
+        primary = purple,
         onPrimary = white,
-        secondary = darkGreen,
+        secondary = green,
         onSecondary = black,
-        tertiary = baseBlue,
+        tertiary = blue,
         onTertiary = white,
-        surface = baseYellow,
+        background = white,
+        onBackground = black,
+        surface = yellow,
         onSurface = black,
-        background = white
+        error = red,
+        onError = white
     )
 
-    // Deuteranopia (Green Blind)
-    private val deuteranopiaColors = lightColorScheme(
-        primary = baseRed,
+    private val deuteranopiaLight = lightColorScheme(
+        primary = red,
         onPrimary = white,
-        secondary = baseBrown,
+        secondary = brown,
         onSecondary = white,
-        tertiary = baseBlue,
+        tertiary = blue,
         onTertiary = white,
-        surface = baseYellow,
+        background = white,
+        onBackground = black,
+        surface = yellow,
         onSurface = black,
-        background = white
+        error = orange,
+        onError = black
     )
 
-    // Tritanopia (Blue-Yellow Blind)
-    private val tritanopiaColors = lightColorScheme(
-        primary = baseRed,
+    private val tritanopiaLight = lightColorScheme(
+        primary = red,
         onPrimary = white,
-        secondary = darkGreen,
+        secondary = green,
         onSecondary = black,
-        tertiary = basePurple,
+        tertiary = purple,
         onTertiary = white,
-        surface = baseOrange,
+        background = white,
+        onBackground = black,
+        surface = orange,
         onSurface = black,
-        background = white
+        error = blue,
+        onError = white
     )
 
-    fun getColorScheme(type: Types): ColorScheme  {
+    // DARK THEMES
+
+    private val protanopiaDark = darkColorScheme(
+        primary = purple,
+        onPrimary = black,
+        secondary = green,
+        onSecondary = white,
+        tertiary = blue,
+        onTertiary = black,
+        background = Color(0xFF121212),
+        onBackground = white,
+        surface = gray,
+        onSurface = black,
+        error = red,
+        onError = white
+    )
+
+    private val deuteranopiaDark = darkColorScheme(
+        primary = red,
+        onPrimary = black,
+        secondary = brown,
+        onSecondary = white,
+        tertiary = blue,
+        onTertiary = black,
+        background = Color(0xFF121212),
+        onBackground = white,
+        surface = gray,
+        onSurface = white,
+        error = orange,
+        onError = black
+    )
+
+    private val tritanopiaDark = darkColorScheme(
+        primary = red,
+        onPrimary = white,
+        secondary = green,
+        onSecondary = black,
+        tertiary = purple,
+        onTertiary = white,
+        background = Color(0xFF121212),
+        onBackground = white,
+        surface = gray,
+        onSurface = white,
+        error = blue,
+        onError = white
+    )
+
+    fun getColorScheme(type: Types, isDarkTheme: Boolean = false): ColorScheme {
         return when (type) {
-            Types.PROTANOPIA -> protanopiaColors
-            Types.DEUTERANOPIA -> deuteranopiaColors
-            Types.TRITANOPIA -> tritanopiaColors
+            Types.PROTANOPIA -> if (isDarkTheme) protanopiaDark else protanopiaLight
+            Types.DEUTERANOPIA -> if (isDarkTheme) deuteranopiaDark else deuteranopiaLight
+            Types.TRITANOPIA -> if (isDarkTheme) tritanopiaDark else tritanopiaLight
         }
     }
 }
