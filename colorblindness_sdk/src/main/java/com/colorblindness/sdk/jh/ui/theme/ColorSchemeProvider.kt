@@ -8,8 +8,6 @@ import com.colorblindness.sdk.jh.models.Types
 
 class ColorSchemeProvider {
 
-    // 🌈 BASIC COLORS
-
     private val red = Color(0xFFE53935)
     private val green = Color(0xFF43A047)
     private val blue = Color(0xFF1E88E5)
@@ -21,8 +19,7 @@ class ColorSchemeProvider {
     private val white = Color(0xFFFFFFFF)
     private val gray = Color(0xFFBDBDBD)
 
-    // LIGHT THEMES
-
+    // Lichte thema's
     private val protanopiaLight = lightColorScheme(
         primary = purple,
         onPrimary = white,
@@ -68,30 +65,29 @@ class ColorSchemeProvider {
         onError = white
     )
 
-    // DARK THEMES
-
+    // Donkere thema's
     private val protanopiaDark = darkColorScheme(
         primary = purple,
-        onPrimary = black,
+        onPrimary = white, // Veranderd naar white voor betere zichtbaarheid in dark mode
         secondary = green,
-        onSecondary = white,
+        onSecondary = black, // Veranderd naar black voor betere zichtbaarheid in dark mode
         tertiary = blue,
-        onTertiary = black,
+        onTertiary = white, // Veranderd naar white voor betere zichtbaarheid in dark mode
         background = Color(0xFF121212),
         onBackground = white,
         surface = gray,
-        onSurface = black,
+        onSurface = white,
         error = red,
         onError = white
     )
 
     private val deuteranopiaDark = darkColorScheme(
         primary = red,
-        onPrimary = black,
+        onPrimary = white, // Veranderd naar white voor betere zichtbaarheid in dark mode
         secondary = brown,
         onSecondary = white,
         tertiary = blue,
-        onTertiary = black,
+        onTertiary = white, // Veranderd naar white voor betere zichtbaarheid in dark mode
         background = Color(0xFF121212),
         onBackground = white,
         surface = gray,

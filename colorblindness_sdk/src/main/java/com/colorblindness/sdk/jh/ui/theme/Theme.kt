@@ -1,5 +1,6 @@
 package com.colorblindness.sdk.jh.ui.theme
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -9,14 +10,14 @@ import com.colorblindness.sdk.jh.models.Types
 @Composable
 fun SdkTheme(
     type: Types,
-    colorScheme: ColorScheme? = null,
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
     val colorSchemeProvider = remember { ColorSchemeProvider() }
-    val usedColorScheme = colorScheme ?: colorSchemeProvider.getColorScheme(type)
+    val colorScheme: ColorScheme = colorSchemeProvider.getColorScheme(type, isDarkTheme)
 
     MaterialTheme(
-        colorScheme = usedColorScheme,
+        colorScheme = colorScheme,
         content = content
     )
 }
