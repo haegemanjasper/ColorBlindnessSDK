@@ -41,7 +41,7 @@ android {
 
 dependencies {
     // SDK implementation
-    implementation("com.github.haegemanjasper:ColorBlindnessSDK:1.3")
+    implementation("com.github.haegemanjasper:ColorBlindnessSDK:1.0")
     // App implementation
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)

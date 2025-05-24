@@ -68,7 +68,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
                 groupId = "com.github.haegemanjasper"
-                artifactId = "colorblindness-sdk-jasperhaegeman"
+                artifactId = "ColorBlindnessSDK"
                 version = "1.0"
             }
         }
