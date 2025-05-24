@@ -62,10 +62,15 @@ dependencies {
 }
 
 afterEvaluate {
-    extensions.getByType<PublishingExtension>().publications.create("release", MavenPublication::class.java) {
-        from(components["release"])
-        groupId = "com.github.haegemanjasper"
-        artifactId = "ColorBlindnessSDK"
-        version = "1.5"
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "com.github.haegemanjasper"
+                artifactId = "ColorBlindnessSDK"
+                version = "1.6"
+
+                artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar")
+            }
+        }
     }
 }
