@@ -1,37 +1,39 @@
-# 🎨 ColorBlindness SDK for Android (Jetpack Compose)
+# Integratie van de Colorblindness SDK
 
-Een toegankelijke UI voor kleurenblindheid integreren in je app?  
-Deze SDK maakt het super eenvoudig om ondersteuning toe te voegen voor **Protanopia**, **Deuteranopia** en **Tritanopia** via Jetpack Compose.
+Deze README beschrijft de stappen voor programmeurs om de Colorblindness SDK in een Android-project te integreren.
 
----
+## Installatie
 
-## 📦 Features
+1.  **Include de SDK module in `settings.gradle.kts`:**
+    ```kotlin
+    rootProject.name = "{project-name}"
+    include(":app", ":sdk_colorblindness")
+    ```
 
-Volledige ondersteuning voor:
-
-- Roodblind (Protanopia)
-- Groenblind (Deuteranopia)
-- Blauw-geelblind (Tritanopia)
-
-✅ 1 regel om in te pluggen  
-✅ Mooie kleurenschema’s die rekening houden met beperking  
-✅ Flexibel theming systeem  
-✅ Automatische dropdown-integratie  
-✅ Dark & light mode ondersteuning  
-✅ Compact & modulair
-
----
-
-## 🚀 Installatie (vanuit Maven Central)
-
-### 1. Voeg Maven Central toe (indien nodig)
-
-In `settings.gradle.kts` of `settings.gradle`:
-
-```kotlin
-dependencyResolutionManagement {
-    repositories {
-        google()
-        mavenCentral()
+2.  **Voeg de SDK implementatie toe aan het `build.gradle.kts` bestand van je app module:**
+    ```kotlin
+    dependencies {
+        implementation(project(":sdk_colorblindness"))
+        // andere dependencies 
     }
-}
+    ```
+
+3.  **Voeg de benodigde repositories toe aan het `settings.gradle.kts` bestand op root niveau:**
+    ```kotlin
+    pluginManagement {
+        repositories {
+            google()
+            mavenCentral()
+            gradlePluginPortal()
+        }
+    }
+
+    dependencyResolutionManagement {
+        repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+        repositories {
+            mavenCentral()
+            maven("[https://jitpack.io](https://jitpack.io)")
+            google()
+        }
+    }
+    ```
