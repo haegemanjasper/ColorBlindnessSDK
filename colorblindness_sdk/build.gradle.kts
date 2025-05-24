@@ -67,10 +67,17 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "com.github.haegemanjasper"
                 artifactId = "ColorBlindnessSDK"
-                version = "1.6"
+                version = "1.7"
 
-                artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar")
+                artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar") {
+                    builtBy(tasks.named("bundleReleaseAar"))
+                }
             }
         }
     }
 }
+
+
+
+
+
