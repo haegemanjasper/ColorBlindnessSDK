@@ -69,7 +69,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.haegemanjasper"
                 artifactId = "ColorBlindnessSDK"
-                version = "1.0"
+                version = "1.4"
             }
         }
     }
