@@ -1,11 +1,10 @@
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("maven-publish")
 }
 
-apply(plugin = "maven-publish")
 
 
 android {
@@ -63,15 +62,10 @@ dependencies {
 }
 
 afterEvaluate {
-    extensions.configure<PublishingExtension>("publishing") {
-        publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                groupId = "com.github.haegemanjasper"
-                artifactId = "ColorBlindnessSDK"
-                version = "1.4"
-            }
-        }
+    extensions.getByType<PublishingExtension>().publications.create("release", MavenPublication::class.java) {
+        from(components["release"])
+        groupId = "com.github.haegemanjasper"
+        artifactId = "ColorBlindnessSDK"
+        version = "1.5"
     }
 }
-
