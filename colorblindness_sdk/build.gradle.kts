@@ -3,8 +3,9 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.maven.publish)
 }
+
+apply(plugin = "maven-publish")
 
 
 android {
@@ -62,7 +63,7 @@ dependencies {
 }
 
 afterEvaluate {
-    publishing {
+    extensions.configure<PublishingExtension>("publishing") {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
@@ -73,3 +74,4 @@ afterEvaluate {
         }
     }
 }
+
