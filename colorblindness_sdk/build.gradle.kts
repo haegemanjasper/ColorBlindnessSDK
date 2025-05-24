@@ -61,21 +61,22 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                groupId = "com.github.haegemanjasper"
-                artifactId = "ColorBlindnessSDK"
-                version = "1.7"
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            groupId = "com.github.haegemanjasper"
+            artifactId = "ColorBlindnessSDK"
+            version = "1.8"
 
-                artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar") {
-                    builtBy(tasks.named("bundleReleaseAar"))
-                }
-            }
+            artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar")
         }
     }
 }
+
+tasks.withType<PublishToMavenRepository> {
+    dependsOn("bundleReleaseAar")
+}
+
 
 
 
