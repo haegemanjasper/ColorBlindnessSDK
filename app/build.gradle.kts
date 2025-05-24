@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -41,7 +41,7 @@ android {
 
 dependencies {
     // SDK implementation
-    implementation("com.github.haegemanjasper:ColorBlindnessSDK:v1.2")
+    implementation("com.github.haegemanjasper:ColorBlindnessSDK:1.3")
     // App implementation
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
