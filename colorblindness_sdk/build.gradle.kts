@@ -60,7 +60,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.haegemanjasper"
             artifactId = "ColorBlindnessSDK"
-            version = "2.2"
+            version = "2.1.1"
             artifact("$buildDir/libs/colorblindness_sdk-release.aar")
         }
     }
