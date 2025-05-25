@@ -60,7 +60,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.haegemanjasper"
             artifactId = "ColorBlindnessSDK"
-            version = "2.1"
+            version = "2.2"
             artifact("$buildDir/libs/colorblindness_sdk-release.aar")
         }
     }
@@ -74,7 +74,7 @@ tasks.register<Copy>("copyAarToLibs") {
     into("$buildDir/libs/")
 }
 
-// ✅ Dit zorgt dat publish pas gebeurt NADAT het .aar is gekopieerd
-tasks.withType<PublishToMavenRepository> {
+tasks.named("publish") {
     dependsOn("copyAarToLibs")
 }
+
