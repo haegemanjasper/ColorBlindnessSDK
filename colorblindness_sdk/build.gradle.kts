@@ -61,10 +61,13 @@ publishing {
             groupId = "com.github.haegemanjasper"
             artifactId = "ColorBlindnessSDK"
             version = "2.1.1"
-            artifact("$buildDir/libs/colorblindness_sdk-release.aar")
+
+            // ✅ Belangrijk: gebruik de bundling task zelf als artifact
+            artifact(tasks.named("bundleReleaseAar"))
         }
     }
 }
+
 
 // ✅ Deze taak kopieert het .aar bestand naar waar JitPack het verwacht
 tasks.register<Copy>("copyAarToLibs") {
