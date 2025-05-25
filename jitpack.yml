@@ -1,4 +1,8 @@
 jdk:
   - openjdk17
+
 install:
-  - ./gradlew publish
+  - ./gradlew :colorblindness_sdk:publish
+
+artifacts:
+  - colorblindness_sdk/build/libs/*.aar

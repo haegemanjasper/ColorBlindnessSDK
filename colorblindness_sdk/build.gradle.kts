@@ -5,15 +5,12 @@ plugins {
     id("maven-publish")
 }
 
-
-
 android {
     namespace = "com.colorblindness.sdk.jh"
     compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -27,10 +24,12 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -41,21 +40,16 @@ android {
 }
 
 dependencies {
-
-    // regular dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.runtime.android)
 
-    // compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
-    //implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.runtime)
     implementation(libs.androidx.material3.android)
 
-    // test dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,19 +60,21 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.haegemanjasper"
             artifactId = "ColorBlindnessSDK"
-            version = "1.8"
-
-            artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar")
+            version = "2.1"
+            artifact("$buildDir/libs/colorblindness_sdk-release.aar")
         }
     }
 }
 
-tasks.withType<PublishToMavenRepository> {
+// ✅ Deze taak kopieert het .aar bestand naar waar JitPack het verwacht
+tasks.register<Copy>("copyAarToLibs") {
     dependsOn("bundleReleaseAar")
+    from("$buildDir/outputs/aar/")
+    include("colorblindness_sdk-release.aar")
+    into("$buildDir/libs/")
 }
 
-
-
-
-
-
+// ✅ Dit zorgt dat publish pas gebeurt NADAT het .aar is gekopieerd
+tasks.withType<PublishToMavenRepository> {
+    dependsOn("copyAarToLibs")
+}
