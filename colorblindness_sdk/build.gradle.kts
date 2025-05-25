@@ -60,24 +60,21 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.haegemanjasper"
             artifactId = "ColorBlindnessSDK"
-            version = "2.1.1"
+            version = "2.1.2"
 
-            // ✅ Belangrijk: gebruik de bundling task zelf als artifact
-            artifact(tasks.named("bundleReleaseAar"))
+            artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar")
         }
     }
 }
 
-
-// ✅ Deze taak kopieert het .aar bestand naar waar JitPack het verwacht
 tasks.register<Copy>("copyAarToLibs") {
-    dependsOn("bundleReleaseAar")
+    dependsOn("assembleRelease")
     from("$buildDir/outputs/aar/")
     include("colorblindness_sdk-release.aar")
     into("$buildDir/libs/")
 }
 
-tasks.named("publish") {
+tasks.withType<PublishToMavenRepository> {
     dependsOn("copyAarToLibs")
 }
 
