@@ -60,7 +60,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.haegemanjasper"
             artifactId = "ColorBlindnessSDK"
-            version = "2.1.2"
+            version = "2.2"
 
             artifact("$buildDir/outputs/aar/colorblindness_sdk-release.aar")
         }
@@ -76,5 +76,5 @@ tasks.register<Copy>("copyAarToLibs") {
 
 tasks.withType<PublishToMavenRepository> {
     dependsOn("copyAarToLibs")
-}
 
+}
